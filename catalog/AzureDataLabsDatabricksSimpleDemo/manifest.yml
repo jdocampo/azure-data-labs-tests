@@ -4,10 +4,6 @@ description: Deploys an environment using Terraform containing a resource group
 runner: Terraform
 templatePath: main.tf
 parameters: 
-- id: "resource_group_name"
-  name: "Resource Group"
-  type: "string"
-  required: true
 - id: "prefix"
   name: "Prefix"
   type: "string"
