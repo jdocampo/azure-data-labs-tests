@@ -25,6 +25,8 @@ resource "azurerm_role_assignment" "resource_group_owner" {
   scope                = module.resource_group.id
   role_definition_name = "Owner"
   principal_id         = var.principal_id
+
+  count = var.principal_id ? 1 : 0
 }
 
 resource "azurerm_role_assignment" "resource_group_global_dns_owner" {
@@ -32,5 +34,5 @@ resource "azurerm_role_assignment" "resource_group_global_dns_owner" {
   role_definition_name = "Owner"
   principal_id         = var.principal_id
 
-  count = var.enable_private_endpoints ? 1 : 0
+  count = var.principal_id && var.enable_private_endpoints ? 1 : 0
 }
