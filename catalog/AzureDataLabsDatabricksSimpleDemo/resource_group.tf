@@ -19,7 +19,7 @@ module "resource_group_global_dns" {
 
   tags = local.tags
 }
-
+  
 # Add the owner role assignment to the resource group
 resource "azurerm_role_assignment" "resource_group_owner" {
   scope                = module.resource_group.id
