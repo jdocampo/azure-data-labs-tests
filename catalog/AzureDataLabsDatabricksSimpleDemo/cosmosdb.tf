@@ -2,7 +2,7 @@ module "cosmosdb-account" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/cosmosdb/cosmosdb-account?ref=v1.5.0&depth=1"
 
   basename            = local.basename
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   location            = var.location
 
   module_enabled = var.enable_cosmosdb
@@ -16,7 +16,7 @@ module "cosmosdb-sql-database" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/cosmosdb/cosmosdb-sql-database?ref=v1.5.0&depth=1"
 
   basename            = local.basename
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   location            = var.location
 
   module_enabled      = var.enable_cosmosdb

@@ -2,7 +2,7 @@ module "event_hubs_namespace" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs-namespace?ref=v1.5.0&depth=1"
 
   basename            = local.basename
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   location            = var.location
 
   subnet_id            = var.enable_private_endpoints ? module.subnet_default[0].id : null
@@ -19,7 +19,7 @@ module "event_hubs" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs?ref=v1.5.0&depth=1"
 
   basename            = local.basename
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   namespace_name      = var.enable_event_hub_namespace ? module.event_hubs_namespace.name : local.basename
 
   module_enabled = var.enable_event_hub_namespace

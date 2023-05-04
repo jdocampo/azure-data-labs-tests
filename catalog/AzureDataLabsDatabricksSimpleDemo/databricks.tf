@@ -5,7 +5,7 @@ module "databricks_workspace" {
   #source = "../../../../azure-data-labs-modules/terraform/databricks/databricks-workspace/"
   # Base config
   basename            = local.basename
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   location            = var.location
   module_enabled      = true
   # Vnet config

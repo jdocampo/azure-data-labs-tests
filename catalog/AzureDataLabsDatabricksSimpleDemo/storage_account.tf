@@ -4,7 +4,7 @@ module "storage_account_adb" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/storage-account?ref=v1.5.0&depth=1"
 
   basename            = "${local.safe_basename}adb"
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.name
   location            = var.location
   account_tier        = "Standard"
 
