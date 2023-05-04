@@ -93,3 +93,22 @@ module "subnet_adb_private_security_group_association" {
   subnet_id                 = module.subnet_adb_private.id
   network_security_group_id = module.network_security_group.id
 }
+
+
+module "subnet_default_security_group_association" {
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
+
+  subnet_id                 = module.subnet_default.id
+  network_security_group_id = module.network_security_group.id
+
+  count = var.enable_private_endpoints ? 1 : 0
+}
+
+module "subnet_bastion_security_group_association" {
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
+
+  subnet_id                 = module.subnet_bastion.id
+  network_security_group_id = module.network_security_group.id
+
+  count = var.enable_jumphost ? 1 : 0
+}
