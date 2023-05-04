@@ -22,7 +22,7 @@ locals {
     "privatelink.database.windows.net",
     "privatelink.azuredatabricks.net",
     "privatelink.documents.azure.com",
-    "privatelink.${var.location}.kusto.windows.net"
+    "privatelink.${module.resource_group.location}.kusto.windows.net"
   ]
 
   safe_prefix   = replace(var.prefix, "-", "")

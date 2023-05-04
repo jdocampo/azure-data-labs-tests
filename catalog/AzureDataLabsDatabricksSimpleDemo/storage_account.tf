@@ -5,7 +5,7 @@ module "storage_account_adb" {
 
   basename            = "${local.safe_basename}adb"
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
   account_tier        = "Standard"
 
   subnet_id                 = var.enable_private_endpoints ? module.subnet_default[0].id : null

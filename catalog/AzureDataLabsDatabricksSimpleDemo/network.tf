@@ -5,7 +5,7 @@ module "virtual_network" {
 
   basename            = local.basename
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
   address_space       = ["10.0.0.0/16"]
 
   tags = local.tags
@@ -17,7 +17,7 @@ module "network_security_group" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/network-security-group?ref=v1.5.0&depth=1"
 
   basename            = "nsg-${var.prefix}-${var.postfix}"
-  location            = var.location
+  location            = module.resource_group.location
   resource_group_name = module.resource_group.name
 }
 

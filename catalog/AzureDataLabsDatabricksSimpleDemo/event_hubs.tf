@@ -3,7 +3,7 @@ module "event_hubs_namespace" {
 
   basename            = local.basename
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
 
   subnet_id            = var.enable_private_endpoints ? module.subnet_default[0].id : null
   private_dns_zone_ids = var.enable_private_endpoints ? [module.private_dns_zones[0].list["privatelink.servicebus.windows.net"].id] : null

@@ -3,7 +3,7 @@ module "cosmosdb-account" {
 
   basename            = local.basename
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
 
   module_enabled = var.enable_cosmosdb
 
@@ -17,7 +17,7 @@ module "cosmosdb-sql-database" {
 
   basename            = local.basename
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
 
   module_enabled      = var.enable_cosmosdb
   is_private_endpoint = var.enable_private_endpoints

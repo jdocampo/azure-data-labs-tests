@@ -6,7 +6,7 @@ module "databricks_workspace" {
   # Base config
   basename            = local.basename
   resource_group_name = module.resource_group.name
-  location            = var.location
+  location            = module.resource_group.location
   module_enabled      = true
   # Vnet config
   virtual_network_id                                   = module.virtual_network.id

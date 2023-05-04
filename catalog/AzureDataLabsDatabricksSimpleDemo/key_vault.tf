@@ -5,7 +5,7 @@ module "key_vault" {
 
   basename                 = local.basename
   resource_group_name      = module.resource_group.name
-  location                 = var.location
+  location                 = module.resource_group.location
   sku_name                 = "premium"
   purge_protection_enabled = false
 
