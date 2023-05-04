@@ -9,14 +9,14 @@ module "databricks_workspace" {
   location            = module.resource_group.location
   module_enabled      = true
   # Vnet config
-  #virtual_network_id                                   = module.virtual_network.id
-  #public_subnet_name                                   = module.subnet_adb_public.name
-  #public_subnet_network_security_group_association_id  = module.subnet_adb_public_security_group_association.id
-  #private_subnet_name                                  = module.subnet_adb_private.name
-  #private_subnet_network_security_group_association_id = module.subnet_adb_private_security_group_association.id
-  #backend_subnet_id                                    = var.enable_private_endpoints ? module.subnet_default[0].id : null
-  #backend_private_dns_zone_ids                         = var.enable_private_endpoints ? [module.private_dns_zones[0].list["privatelink.azuredatabricks.net"].id] : null
-  #backend_dbfs_private_dns_zone_ids                    = var.enable_private_endpoints ? [module.private_dns_zones[0].list["privatelink.dfs.core.windows.net"].id] : null
+  virtual_network_id                                   = var.vnet_injection ? module.virtual_network.id : null
+  public_subnet_name                                   = var.vnet_injection ? module.subnet_adb_public[0].name : null
+  public_subnet_network_security_group_association_id  = var.vnet_injection ? module.subnet_adb_public_security_group_association[0].id : null
+  private_subnet_name                                  = var.vnet_injection ? module.subnet_adb_private[0].name : null
+  private_subnet_network_security_group_association_id = var.vnet_injection ? module.subnet_adb_private_security_group_association[0].id : null
+  backend_subnet_id                                    = var.vnet_injection && var.enable_private_endpoints ? module.subnet_default[0].id : null
+  backend_private_dns_zone_ids                         = var.vnet_injection && var.enable_private_endpoints ? [module.private_dns_zones[0].list["privatelink.azuredatabricks.net"].id] : null
+  backend_dbfs_private_dns_zone_ids                    = var.vnet_injection && var.enable_private_endpoints ? [module.private_dns_zones[0].list["privatelink.dfs.core.windows.net"].id] : null
   # Module config
   is_private_endpoint           = var.enable_private_endpoints
   private_link_deployment_type  = "simplified"

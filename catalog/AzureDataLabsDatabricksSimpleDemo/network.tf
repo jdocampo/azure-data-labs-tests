@@ -78,13 +78,17 @@ module "subnet_adb_public" {
     ]
     }
   ] }
+
+  count = var.vnet_injection ? 1 : 0
 }
 
 module "subnet_adb_public_security_group_association" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
 
-  subnet_id                 = module.subnet_adb_public.id
+  subnet_id                 = module.subnet_adb_public[0].id
   network_security_group_id = module.network_security_group.id
+
+  count = var.vnet_injection ? 1 : 0
 }
 
 module "subnet_adb_private" {
@@ -103,11 +107,15 @@ module "subnet_adb_private" {
     ]
     }
   ] }
+
+  count = var.vnet_injection ? 1 : 0
 }
 
 module "subnet_adb_private_security_group_association" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
 
-  subnet_id                 = module.subnet_adb_private.id
+  subnet_id                 = module.subnet_adb_private[0].id
   network_security_group_id = module.network_security_group.id
+
+  count = var.vnet_injection ? 1 : 0
 }
