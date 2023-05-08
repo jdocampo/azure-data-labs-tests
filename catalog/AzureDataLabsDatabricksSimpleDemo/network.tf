@@ -33,14 +33,14 @@ module "subnet_default" {
   count = var.enable_private_endpoints ? 1 : 0
 }
 
-module "subnet_default_security_group_association" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
-
-  subnet_id                 = module.subnet_default[0].id
-  network_security_group_id = module.network_security_group.id
-
-  count = var.enable_private_endpoints ? 1 : 0
-}
+#module "subnet_default_security_group_association" {
+#  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
+#
+#  subnet_id                 = module.subnet_default[0].id
+#  network_security_group_id = module.network_security_group.id
+#
+#  count = var.enable_private_endpoints ? 1 : 0
+#}
 
 module "subnet_bastion" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet?ref=v1.5.0&depth=1"
@@ -53,14 +53,14 @@ module "subnet_bastion" {
   count = var.enable_jumphost ? 1 : 0
 }
 
-module "subnet_bastion_security_group_association" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
-
-  subnet_id                 = module.subnet_bastion[0].id
-  network_security_group_id = module.network_security_group.id
-
-  count = var.enable_jumphost ? 1 : 0
-}
+#module "subnet_bastion_security_group_association" {
+#  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
+#
+#  subnet_id                 = module.subnet_bastion[0].id
+#  network_security_group_id = module.network_security_group.id
+#
+#  count = var.enable_jumphost ? 1 : 0
+#}
 
 module "subnet_adb_public" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet?ref=v1.5.0&depth=1"
