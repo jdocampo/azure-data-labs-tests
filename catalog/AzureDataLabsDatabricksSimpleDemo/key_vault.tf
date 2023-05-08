@@ -1,7 +1,7 @@
 # Key Vault
 /*
 module "key_vault" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/key-vault?ref=v1.5.0&depth=1"
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/key-vault?ref=main"
 
   basename                 = local.basename
   resource_group_name      = module.resource_group.name

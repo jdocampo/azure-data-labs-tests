@@ -1,5 +1,5 @@
 module "log_analytics_workspace" {
-  source              = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/log-analytics/log-analytics-workspace?ref=v1.5.0&depth=1"
+  source              = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/log-analytics/log-analytics-workspace?ref=main"
   basename            = local.basename
   resource_group_name = module.resource_group.name
   location            = module.resource_group.location

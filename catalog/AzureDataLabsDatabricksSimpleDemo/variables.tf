@@ -79,14 +79,3 @@ variable "resource_group_name" {
   type        = string
   description = "Variable needed for ADE"
 }
-
-variable "principal_id" {
-  type        = string
-  description = "Principal ID that will get Owner access to the resource groups"
-}
-
-variable "vnet_injection" {
-  type        = bool
-  description = "Variable to enable or disable vnet injection for Databricks workspace"
-  default     = true
-}

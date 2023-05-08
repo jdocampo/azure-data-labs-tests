@@ -1,7 +1,7 @@
 # Resource group
 
 module "resource_group" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=v1.5.0&depth=1"
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=main"
 
   basename = local.basename
   location = var.location
@@ -10,7 +10,7 @@ module "resource_group" {
 }
 
 module "resource_group_global_dns" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=v1.5.0&depth=1"
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=main"
 
   basename = "${local.basename}-global-dns"
   location = var.location
@@ -19,20 +19,3 @@ module "resource_group_global_dns" {
 
   tags = local.tags
 }
-  
-# Add the owner role assignment to the resource group
-#resource "azurerm_role_assignment" "resource_group_owner" {
-#  scope                = module.resource_group.id
-#  role_definition_name = "Owner"
-#  principal_id         = var.principal_id
-#
-#  count = var.principal_id ? 1 : 0
-#}
-#
-#resource "azurerm_role_assignment" "resource_group_global_dns_owner" {
-#  scope                = module.resource_group_global_dns[0].id
-#  role_definition_name = "Owner"
-#  principal_id         = var.principal_id
-#
-#  count = var.principal_id && var.enable_private_endpoints ? 1 : 0
-#}

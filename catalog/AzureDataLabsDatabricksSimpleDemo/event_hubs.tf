@@ -1,5 +1,5 @@
 module "event_hubs_namespace" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs-namespace?ref=v1.5.0&depth=1"
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs-namespace?ref=main"
 
   basename            = local.basename
   resource_group_name = module.resource_group.name
@@ -16,7 +16,7 @@ module "event_hubs_namespace" {
 }
 
 module "event_hubs" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs?ref=v1.5.0&depth=1"
+  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/event-hubs/event-hubs?ref=main"
 
   basename            = local.basename
   resource_group_name = module.resource_group.name

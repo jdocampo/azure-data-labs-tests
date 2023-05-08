@@ -4,10 +4,6 @@ description: Deploys an environment using Terraform containing a resource group
 runner: Terraform
 templatePath: main.tf
 parameters: 
-- id: "principal_id"
-  name: "Principal ID"
-  type: "string"
-  required: true
 - id: "prefix"
   name: "Prefix"
   type: "string"
@@ -19,10 +15,6 @@ parameters:
 - id: "location"
   name: "Location"
   default: "centralus"
-  type: "string"
-- id: "vnet_injection"
-  name: "vnet_injection"
-  default: "false"
   type: "string"
 - id: "enable_private_endpoints"
   name: "enable_private_endpoints"
