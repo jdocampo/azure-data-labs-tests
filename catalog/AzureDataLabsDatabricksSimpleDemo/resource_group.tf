@@ -21,18 +21,18 @@ module "resource_group_global_dns" {
 }
   
 # Add the owner role assignment to the resource group
-resource "azurerm_role_assignment" "resource_group_owner" {
-  scope                = module.resource_group.id
-  role_definition_name = "Owner"
-  principal_id         = var.principal_id
-
-  count = var.principal_id ? 1 : 0
-}
-
-resource "azurerm_role_assignment" "resource_group_global_dns_owner" {
-  scope                = module.resource_group_global_dns[0].id
-  role_definition_name = "Owner"
-  principal_id         = var.principal_id
-
-  count = var.principal_id && var.enable_private_endpoints ? 1 : 0
-}
+#resource "azurerm_role_assignment" "resource_group_owner" {
+#  scope                = module.resource_group.id
+#  role_definition_name = "Owner"
+#  principal_id         = var.principal_id
+#
+#  count = var.principal_id ? 1 : 0
+#}
+#
+#resource "azurerm_role_assignment" "resource_group_global_dns_owner" {
+#  scope                = module.resource_group_global_dns[0].id
+#  role_definition_name = "Owner"
+#  principal_id         = var.principal_id
+#
+#  count = var.principal_id && var.enable_private_endpoints ? 1 : 0
+#}
