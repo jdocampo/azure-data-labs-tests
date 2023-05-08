@@ -1,13 +1,13 @@
 # Resource group
 
-module "resource_group" {
-  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=main"
-
-  basename = local.basename
-  location = var.location
-
-  tags = local.tags
-}
+#module "resource_group" {
+#  source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=main"
+#
+#  basename = local.basename
+#  location = var.location
+#
+#  tags = local.tags
+#}
 
 module "resource_group_global_dns" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/resource-group?ref=main"
