@@ -83,7 +83,7 @@ module "subnet_adb_public" {
 module "subnet_adb_public_security_group_association" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
 
-  subnet_id                 = module.subnet_adb_public[0].id
+  subnet_id                 = module.subnet_adb_public.id
   network_security_group_id = module.network_security_group.id
 }
 
@@ -108,6 +108,6 @@ module "subnet_adb_private" {
 module "subnet_adb_private_security_group_association" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/subnet-network-security-group-association?ref=v1.5.0&depth=1"
 
-  subnet_id                 = module.subnet_adb_private[0].id
+  subnet_id                 = module.subnet_adb_private.id
   network_security_group_id = module.network_security_group.id
 }
