@@ -4,8 +4,8 @@ module "storage_account_adb" {
   source = "git::https://github.com/Azure/azure-data-labs-modules.git//terraform/storage-account?ref=v1.5.0&depth=1"
 
   basename            = "${local.safe_basename}adb"
-  resource_group_name = module.resource_group.name
-  location            = module.resource_group.location
+  resource_group_name = local.resource_group_name
+  location            = local.location
   account_tier        = "Standard"
 
   subnet_id                 = var.enable_private_endpoints ? module.subnet_default[0].id : null
@@ -18,9 +18,8 @@ module "storage_account_adb" {
   firewall_ip_rules       = [data.http.ip.body]
   firewall_bypass         = ["AzureServices"]
 
-  module_enabled                = true
-  is_private_endpoint           = var.enable_private_endpoints
-  public_network_access_enabled = var.public_network_enabled
+  module_enabled      = true
+  is_private_endpoint = var.enable_private_endpoints
 
   tags = local.tags
 }

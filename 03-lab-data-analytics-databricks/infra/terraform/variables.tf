@@ -74,3 +74,11 @@ variable "enable_data_explorer" {
   description = "Variable to enable or disable the module"
   default     = true
 }
+
+# ADE Integration
+
+variable "resource_group_name" {
+  type        = string
+  description = "Variable for ADE based deployment"
+  default     = "rg-ade-environment"
+}

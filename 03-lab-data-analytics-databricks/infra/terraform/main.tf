@@ -1,5 +1,5 @@
 terraform {
-  #backend "azurerm" {}
+  backend "azurerm" {}
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -7,15 +7,13 @@ terraform {
     }
     databricks = {
       source  = "databricks/databricks"
-      version = "1.13.0"
+      version = "1.15.0"
     }
   }
 }
 
 provider "azurerm" {
   features {}
-
-  skip_provider_registration = true
 }
 
 data "azurerm_client_config" "current" {}

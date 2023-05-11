@@ -1,5 +1,5 @@
-name: AzureDataLabsDatabricksDemo
-summary: Terraform example for Lab 3 - Data Analytics - Databricks
+name: terraform
+summary: Terraform example for Lab 3 - Data Analytics with Databricks
 description: Deploys an environment using Terraform containing a resource group
 runner: Terraform
 templatePath: main.tf
